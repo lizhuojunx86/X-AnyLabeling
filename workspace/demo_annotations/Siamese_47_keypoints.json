@@ -1,0 +1,119 @@
+{
+  "image_id": "Siamese_47.jpg",
+  "annotations": {
+    "bbox": [
+      120,
+      67,
+      230,
+      239
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 206,
+        "y": 287,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 115,
+        "y": 257,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 369,
+        "y": 191,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 337,
+        "y": 172,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 283,
+        "y": 205,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 275,
+        "y": 380,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 337,
+        "y": 372,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 223,
+        "y": 224,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 282,
+        "y": 201,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 231,
+        "y": 145,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 390,
+        "y": 136,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 238,
+        "y": 318,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 334,
+        "y": 344,
+        "visible": 1
+      },
+      {
+        "name": "right_paw_front",
+        "x": 290,
+        "y": 166,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 182,
+        "y": 357,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 155,
+        "y": 379,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 142,
+        "y": 374,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:35.162276",
+  "source": "X-AnyLabeling_demo"
+}

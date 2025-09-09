@@ -1,0 +1,119 @@
+{
+  "image_id": "shiba_inu_136.jpg",
+  "annotations": {
+    "bbox": [
+      102,
+      119,
+      249,
+      261
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 319,
+        "y": 142,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 300,
+        "y": 372,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 214,
+        "y": 131,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 341,
+        "y": 114,
+        "visible": 0
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 269,
+        "y": 293,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 161,
+        "y": 117,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 199,
+        "y": 146,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 160,
+        "y": 330,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 254,
+        "y": 387,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 258,
+        "y": 248,
+        "visible": 0
+      },
+      {
+        "name": "left_elbow",
+        "x": 123,
+        "y": 297,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 317,
+        "y": 159,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 293,
+        "y": 120,
+        "visible": 1
+      },
+      {
+        "name": "right_paw_front",
+        "x": 122,
+        "y": 218,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 187,
+        "y": 357,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 306,
+        "y": 329,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 172,
+        "y": 269,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:35.363794",
+  "source": "X-AnyLabeling_demo"
+}

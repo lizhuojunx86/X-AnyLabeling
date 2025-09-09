@@ -1,0 +1,119 @@
+{
+  "image_id": "basset_hound_112.jpg",
+  "annotations": {
+    "bbox": [
+      129,
+      53,
+      297,
+      247
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 153,
+        "y": 109,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 112,
+        "y": 162,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 397,
+        "y": 202,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 223,
+        "y": 278,
+        "visible": 0
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 204,
+        "y": 288,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 337,
+        "y": 119,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 218,
+        "y": 127,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 133,
+        "y": 271,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 249,
+        "y": 203,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 270,
+        "y": 138,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 298,
+        "y": 188,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 131,
+        "y": 195,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 289,
+        "y": 384,
+        "visible": 0
+      },
+      {
+        "name": "right_paw_front",
+        "x": 388,
+        "y": 400,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 217,
+        "y": 203,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 170,
+        "y": 346,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 197,
+        "y": 349,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:33.930442",
+  "source": "X-AnyLabeling_demo"
+}

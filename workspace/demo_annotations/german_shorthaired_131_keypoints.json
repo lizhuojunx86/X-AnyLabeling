@@ -1,0 +1,119 @@
+{
+  "image_id": "german_shorthaired_131.jpg",
+  "annotations": {
+    "bbox": [
+      129,
+      57,
+      220,
+      245
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 154,
+        "y": 330,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 207,
+        "y": 293,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 209,
+        "y": 157,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 211,
+        "y": 253,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 379,
+        "y": 304,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 177,
+        "y": 182,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 234,
+        "y": 142,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 375,
+        "y": 235,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 270,
+        "y": 319,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 173,
+        "y": 212,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 156,
+        "y": 123,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 269,
+        "y": 298,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 368,
+        "y": 112,
+        "visible": 1
+      },
+      {
+        "name": "right_paw_front",
+        "x": 383,
+        "y": 382,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 131,
+        "y": 337,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 233,
+        "y": 188,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 363,
+        "y": 127,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:39.260172",
+  "source": "X-AnyLabeling_demo"
+}

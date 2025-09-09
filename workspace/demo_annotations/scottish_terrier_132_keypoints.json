@@ -1,0 +1,119 @@
+{
+  "image_id": "scottish_terrier_132.jpg",
+  "annotations": {
+    "bbox": [
+      97,
+      70,
+      241,
+      204
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 127,
+        "y": 341,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 139,
+        "y": 263,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 119,
+        "y": 383,
+        "visible": 0
+      },
+      {
+        "name": "left_ear_base",
+        "x": 374,
+        "y": 346,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 295,
+        "y": 176,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 173,
+        "y": 309,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 219,
+        "y": 356,
+        "visible": 0
+      },
+      {
+        "name": "neck",
+        "x": 218,
+        "y": 149,
+        "visible": 0
+      },
+      {
+        "name": "left_shoulder",
+        "x": 249,
+        "y": 146,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 387,
+        "y": 278,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 335,
+        "y": 153,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 114,
+        "y": 355,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 107,
+        "y": 384,
+        "visible": 1
+      },
+      {
+        "name": "right_paw_front",
+        "x": 368,
+        "y": 353,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 367,
+        "y": 104,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 300,
+        "y": 347,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 358,
+        "y": 227,
+        "visible": 0
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:37.828611",
+  "source": "X-AnyLabeling_demo"
+}

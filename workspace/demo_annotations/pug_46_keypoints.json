@@ -1,0 +1,119 @@
+{
+  "image_id": "pug_46.jpg",
+  "annotations": {
+    "bbox": [
+      98,
+      134,
+      294,
+      255
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 262,
+        "y": 321,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 376,
+        "y": 294,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 332,
+        "y": 338,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 379,
+        "y": 194,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 189,
+        "y": 236,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 117,
+        "y": 266,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 208,
+        "y": 119,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 380,
+        "y": 158,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 264,
+        "y": 272,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 394,
+        "y": 265,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 315,
+        "y": 238,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 339,
+        "y": 307,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 242,
+        "y": 139,
+        "visible": 0
+      },
+      {
+        "name": "right_paw_front",
+        "x": 356,
+        "y": 124,
+        "visible": 0
+      },
+      {
+        "name": "tail_base",
+        "x": 388,
+        "y": 264,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 216,
+        "y": 178,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 177,
+        "y": 281,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:37.009113",
+  "source": "X-AnyLabeling_demo"
+}

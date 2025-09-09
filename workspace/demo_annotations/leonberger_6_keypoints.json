@@ -1,0 +1,119 @@
+{
+  "image_id": "leonberger_6.jpg",
+  "annotations": {
+    "bbox": [
+      138,
+      65,
+      295,
+      218
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 371,
+        "y": 365,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 297,
+        "y": 293,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 222,
+        "y": 177,
+        "visible": 0
+      },
+      {
+        "name": "left_ear_base",
+        "x": 133,
+        "y": 296,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 330,
+        "y": 363,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 255,
+        "y": 164,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 125,
+        "y": 375,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 192,
+        "y": 359,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 368,
+        "y": 263,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 220,
+        "y": 133,
+        "visible": 0
+      },
+      {
+        "name": "left_elbow",
+        "x": 284,
+        "y": 156,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 240,
+        "y": 325,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 332,
+        "y": 132,
+        "visible": 1
+      },
+      {
+        "name": "right_paw_front",
+        "x": 299,
+        "y": 106,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 313,
+        "y": 166,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 304,
+        "y": 228,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 285,
+        "y": 133,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:34.956911",
+  "source": "X-AnyLabeling_demo"
+}

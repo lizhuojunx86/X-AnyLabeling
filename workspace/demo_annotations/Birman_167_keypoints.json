@@ -1,0 +1,119 @@
+{
+  "image_id": "Birman_167.jpg",
+  "annotations": {
+    "bbox": [
+      136,
+      62,
+      291,
+      263
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 325,
+        "y": 201,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 277,
+        "y": 367,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 143,
+        "y": 155,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 309,
+        "y": 382,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 251,
+        "y": 264,
+        "visible": 0
+      },
+      {
+        "name": "right_ear_base",
+        "x": 208,
+        "y": 228,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 345,
+        "y": 309,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 249,
+        "y": 394,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 245,
+        "y": 105,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 393,
+        "y": 259,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 393,
+        "y": 374,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 104,
+        "y": 161,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 381,
+        "y": 324,
+        "visible": 1
+      },
+      {
+        "name": "right_paw_front",
+        "x": 274,
+        "y": 148,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 202,
+        "y": 145,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 303,
+        "y": 372,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 163,
+        "y": 223,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:34.751256",
+  "source": "X-AnyLabeling_demo"
+}

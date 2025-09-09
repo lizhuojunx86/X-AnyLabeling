@@ -1,0 +1,119 @@
+{
+  "image_id": "english_setter_170.jpg",
+  "annotations": {
+    "bbox": [
+      129,
+      145,
+      252,
+      247
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 138,
+        "y": 358,
+        "visible": 0
+      },
+      {
+        "name": "left_eye",
+        "x": 301,
+        "y": 260,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 381,
+        "y": 231,
+        "visible": 0
+      },
+      {
+        "name": "left_ear_base",
+        "x": 347,
+        "y": 187,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 343,
+        "y": 321,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 260,
+        "y": 335,
+        "visible": 0
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 304,
+        "y": 191,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 200,
+        "y": 144,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 150,
+        "y": 269,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 290,
+        "y": 158,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 285,
+        "y": 242,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 384,
+        "y": 164,
+        "visible": 0
+      },
+      {
+        "name": "left_paw_front",
+        "x": 350,
+        "y": 332,
+        "visible": 0
+      },
+      {
+        "name": "right_paw_front",
+        "x": 301,
+        "y": 208,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 224,
+        "y": 368,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 192,
+        "y": 206,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 317,
+        "y": 371,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:39.466444",
+  "source": "X-AnyLabeling_demo"
+}

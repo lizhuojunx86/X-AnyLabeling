@@ -1,0 +1,119 @@
+{
+  "image_id": "wheaten_terrier_49.jpg",
+  "annotations": {
+    "bbox": [
+      74,
+      118,
+      290,
+      243
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 333,
+        "y": 306,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 348,
+        "y": 229,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 139,
+        "y": 294,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 221,
+        "y": 397,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 264,
+        "y": 386,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 242,
+        "y": 190,
+        "visible": 0
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 394,
+        "y": 291,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 323,
+        "y": 363,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 274,
+        "y": 135,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 135,
+        "y": 318,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 273,
+        "y": 185,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 195,
+        "y": 199,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 184,
+        "y": 233,
+        "visible": 1
+      },
+      {
+        "name": "right_paw_front",
+        "x": 230,
+        "y": 224,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 202,
+        "y": 182,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 276,
+        "y": 236,
+        "visible": 0
+      },
+      {
+        "name": "tail_tip",
+        "x": 205,
+        "y": 213,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:36.598254",
+  "source": "X-AnyLabeling_demo"
+}

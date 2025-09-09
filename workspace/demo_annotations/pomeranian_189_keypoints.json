@@ -1,0 +1,119 @@
+{
+  "image_id": "pomeranian_189.jpg",
+  "annotations": {
+    "bbox": [
+      124,
+      138,
+      299,
+      277
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 239,
+        "y": 194,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 121,
+        "y": 221,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 142,
+        "y": 346,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 378,
+        "y": 198,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 285,
+        "y": 303,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 345,
+        "y": 327,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 153,
+        "y": 200,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 315,
+        "y": 155,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 109,
+        "y": 225,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 315,
+        "y": 169,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 171,
+        "y": 302,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 351,
+        "y": 342,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 195,
+        "y": 189,
+        "visible": 0
+      },
+      {
+        "name": "right_paw_front",
+        "x": 279,
+        "y": 181,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 304,
+        "y": 384,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 349,
+        "y": 233,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 118,
+        "y": 292,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:38.646605",
+  "source": "X-AnyLabeling_demo"
+}

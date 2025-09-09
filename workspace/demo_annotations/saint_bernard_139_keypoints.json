@@ -1,0 +1,119 @@
+{
+  "image_id": "saint_bernard_139.jpg",
+  "annotations": {
+    "bbox": [
+      55,
+      76,
+      241,
+      277
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 375,
+        "y": 199,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 203,
+        "y": 245,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 209,
+        "y": 245,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 397,
+        "y": 330,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 280,
+        "y": 373,
+        "visible": 0
+      },
+      {
+        "name": "right_ear_base",
+        "x": 116,
+        "y": 187,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 255,
+        "y": 394,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 364,
+        "y": 261,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 134,
+        "y": 118,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 378,
+        "y": 251,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 276,
+        "y": 309,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 291,
+        "y": 174,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 266,
+        "y": 189,
+        "visible": 0
+      },
+      {
+        "name": "right_paw_front",
+        "x": 117,
+        "y": 288,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 175,
+        "y": 388,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 393,
+        "y": 351,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 282,
+        "y": 343,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:35.567615",
+  "source": "X-AnyLabeling_demo"
+}

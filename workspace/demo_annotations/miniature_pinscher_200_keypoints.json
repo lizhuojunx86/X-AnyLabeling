@@ -1,0 +1,119 @@
+{
+  "image_id": "miniature_pinscher_200.jpg",
+  "annotations": {
+    "bbox": [
+      55,
+      144,
+      284,
+      278
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 235,
+        "y": 311,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 122,
+        "y": 222,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 260,
+        "y": 147,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 164,
+        "y": 130,
+        "visible": 0
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 147,
+        "y": 214,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 368,
+        "y": 287,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 305,
+        "y": 138,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 254,
+        "y": 258,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 190,
+        "y": 244,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 266,
+        "y": 269,
+        "visible": 0
+      },
+      {
+        "name": "left_elbow",
+        "x": 361,
+        "y": 168,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 227,
+        "y": 190,
+        "visible": 0
+      },
+      {
+        "name": "left_paw_front",
+        "x": 357,
+        "y": 390,
+        "visible": 1
+      },
+      {
+        "name": "right_paw_front",
+        "x": 397,
+        "y": 374,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 389,
+        "y": 145,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 355,
+        "y": 153,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 244,
+        "y": 235,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:36.184091",
+  "source": "X-AnyLabeling_demo"
+}

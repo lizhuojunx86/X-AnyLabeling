@@ -1,0 +1,119 @@
+{
+  "image_id": "Egyptian_Mau_167.jpg",
+  "annotations": {
+    "bbox": [
+      84,
+      132,
+      234,
+      202
+    ],
+    "keypoints": [
+      {
+        "name": "nose",
+        "x": 395,
+        "y": 311,
+        "visible": 1
+      },
+      {
+        "name": "left_eye",
+        "x": 294,
+        "y": 124,
+        "visible": 1
+      },
+      {
+        "name": "right_eye",
+        "x": 266,
+        "y": 153,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_base",
+        "x": 234,
+        "y": 287,
+        "visible": 1
+      },
+      {
+        "name": "left_ear_tip",
+        "x": 318,
+        "y": 395,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_base",
+        "x": 362,
+        "y": 321,
+        "visible": 1
+      },
+      {
+        "name": "right_ear_tip",
+        "x": 113,
+        "y": 205,
+        "visible": 1
+      },
+      {
+        "name": "neck",
+        "x": 274,
+        "y": 293,
+        "visible": 1
+      },
+      {
+        "name": "left_shoulder",
+        "x": 120,
+        "y": 295,
+        "visible": 1
+      },
+      {
+        "name": "right_shoulder",
+        "x": 398,
+        "y": 311,
+        "visible": 1
+      },
+      {
+        "name": "left_elbow",
+        "x": 250,
+        "y": 150,
+        "visible": 1
+      },
+      {
+        "name": "right_elbow",
+        "x": 215,
+        "y": 258,
+        "visible": 1
+      },
+      {
+        "name": "left_paw_front",
+        "x": 370,
+        "y": 385,
+        "visible": 1
+      },
+      {
+        "name": "right_paw_front",
+        "x": 263,
+        "y": 109,
+        "visible": 1
+      },
+      {
+        "name": "tail_base",
+        "x": 326,
+        "y": 246,
+        "visible": 1
+      },
+      {
+        "name": "tail_mid",
+        "x": 151,
+        "y": 230,
+        "visible": 1
+      },
+      {
+        "name": "tail_tip",
+        "x": 207,
+        "y": 208,
+        "visible": 1
+      }
+    ],
+    "behavior_label": "unknown",
+    "mood_label": "unknown"
+  },
+  "timestamp": "2025-08-21T20:29:33.526045",
+  "source": "X-AnyLabeling_demo"
+}
