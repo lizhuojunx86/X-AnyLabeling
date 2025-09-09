@@ -57,15 +57,18 @@
 <details>
 <summary><strong>视觉问答</strong></summary>
 
-<video src="https://github.com/user-attachments/assets/92807672-f101-475b-b790-9caa1c31da05" width="100%" controls>
+<video src="https://github.com/user-attachments/assets/53adcff4-b962-41b7-a408-3afecd8d8c82" width="100%" controls>
 </video>
 </details>
 
 
 ## 🥳 新功能
 
+- X-AnyLabeling [v3.2.2](https://github.com/CVHub520/X-AnyLabeling/releases/tag/v3.2.2) 最新版本发布
+- 新增 VQA 任务的 AI 助手功能和提示模板管理系统
+- 支持批量编辑多个对象
+- 支持在画布上显示/隐藏对象属性
 - 在 X-AnyLabeling 中内置一键训练功能，支持 Ultralytics 官方 Detect、Segment、OBB、Pose 四大任务 [链接](./examples/training/ultralytics/README.md)
-- X-AnyLabeling [v3.2.0](https://github.com/CVHub520/X-AnyLabeling/releases/tag/v3.2.0) 最新版本发布
 - 更多详情，请参考[更新日志](./CHANGELOG.md)
 
 
@@ -152,6 +155,8 @@
   - [Florence 2](./examples/vision_language/florence2/README.md)
 - [Counting](./examples/counting/)
   - [GeCo](./examples/counting/geco/README.md)
+- [Training](./examples/training/)
+  - [Ultralytics](./examples/training/ultralytics/README.md)
 
 
 ## 赞助

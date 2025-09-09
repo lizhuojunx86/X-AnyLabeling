@@ -1,24 +1,24 @@
 import os
 import json
 
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QTimer
 from PyQt5.QtWidgets import (
-    QDialog,
-    QHBoxLayout,
-    QVBoxLayout,
-    QLabel,
-    QPushButton,
-    QWidget,
-    QScrollArea,
-    QSplitter,
-    QFrame,
-    QRadioButton,
+    QButtonGroup,
     QCheckBox,
     QComboBox,
-    QButtonGroup,
-    QLineEdit,
-    QMessageBox,
+    QDialog,
     QFileDialog,
+    QFrame,
+    QHBoxLayout,
+    QLabel,
+    QMessageBox,
+    QPushButton,
+    QRadioButton,
+    QScrollArea,
+    QSplitter,
+    QTextEdit,
+    QVBoxLayout,
+    QWidget,
 )
 from PyQt5.QtGui import QPixmap, QIcon, QIntValidator
 
@@ -26,6 +26,7 @@ from anylabeling.views.labeling.vqa import *
 from anylabeling.views.labeling.utils.qt import new_icon
 from anylabeling.views.labeling.logger import logger
 from anylabeling.views.labeling.vqa.dialogs import ExportLabelsDialog
+from anylabeling.views.labeling.widgets.popup import Popup
 
 
 class VQADialog(QDialog):
@@ -45,7 +46,10 @@ class VQADialog(QDialog):
             | Qt.WindowMaximizeButtonHint
             | Qt.WindowCloseButtonHint
         )
+        self.setModal(False)
         self.resize(*DEFAULT_WINDOW_SIZE)
+        self.setMinimumSize(PANEL_SIZE, PANEL_SIZE)
+
         self.is_enlarged = False
 
         self.image_files = []
@@ -62,12 +66,10 @@ class VQADialog(QDialog):
         Initialize and setup the user interface layout and components.
         Creates the main layout with left panel (image display) and right panel (controls).
         """
-        # Main horizontal layout with splitters
         main_layout = QHBoxLayout(self)
         main_layout.setContentsMargins(10, 10, 10, 10)
         main_layout.setSpacing(20)
 
-        # Create main splitter for two columns
         self.main_splitter = QSplitter(Qt.Horizontal)
         self.main_splitter.setHandleWidth(3)
         self.main_splitter.setStyleSheet(get_main_splitter_style())
@@ -80,11 +82,35 @@ class VQADialog(QDialog):
         left_layout.setContentsMargins(0, 0, 10, 0)
         left_layout.setSpacing(10)
 
+        header_widget = QWidget()
+        header_layout = QHBoxLayout(header_widget)
+        header_layout.setContentsMargins(0, 0, 0, 0)
+        header_layout.setSpacing(10)
+
         self.filename_label = QLabel(self.tr("No image loaded"))
         self.filename_label.setAlignment(Qt.AlignCenter)
         self.filename_label.setFixedHeight(DEFAULT_COMPONENT_HEIGHT)
         self.filename_label.setStyleSheet(get_filename_label_style())
-        left_layout.addWidget(self.filename_label)
+
+        self.refresh_button = QPushButton()
+        self.refresh_button.setIcon(QIcon(new_icon("refresh", "svg")))
+        self.refresh_button.setFixedSize(*ICON_SIZE_NORMAL)
+        self.refresh_button.setStyleSheet(get_button_style())
+        self.refresh_button.setToolTip(self.tr("Refresh Data"))
+        self.refresh_button.clicked.connect(self.refresh_data)
+
+        self.toggle_panel_button = QPushButton()
+        self.toggle_panel_button.setIcon(QIcon(new_icon("sidebar", "svg")))
+        self.toggle_panel_button.setFixedSize(*ICON_SIZE_NORMAL)
+        self.toggle_panel_button.setStyleSheet(get_button_style())
+        self.toggle_panel_button.setToolTip(self.tr("Toggle Sidebar"))
+        self.toggle_panel_button.clicked.connect(self.toggle_left_panel)
+
+        header_layout.addWidget(self.filename_label, 1)
+        header_layout.addWidget(self.refresh_button)
+        header_layout.addWidget(self.toggle_panel_button)
+
+        left_layout.addWidget(header_widget)
 
         self.image_container = QWidget()
         self.image_container.setStyleSheet(get_image_container_style())
@@ -93,56 +119,10 @@ class VQADialog(QDialog):
 
         self.image_label = QLabel()
         self.image_label.setAlignment(Qt.AlignCenter)
-        self.image_label.setMinimumHeight(400)
         self.image_label.setStyleSheet(get_image_label_style())
         container_layout.addWidget(self.image_label, 1)
 
         left_layout.addWidget(self.image_container, 1)
-
-        nav_widget = QWidget()
-        nav_widget.setFixedHeight(DEFAULT_COMPONENT_HEIGHT)
-        nav_layout = QHBoxLayout(nav_widget)
-        nav_layout.setContentsMargins(0, 0, 0, 0)
-
-        self.prev_button = QPushButton()
-        self.prev_button.setIcon(QIcon(new_icon("arrow-left", "svg")))
-        self.prev_button.setFixedSize(*ICON_SIZE_NORMAL)
-        self.prev_button.setStyleSheet(get_button_style())
-        self.prev_button.clicked.connect(lambda _: self.switch_image("prev"))
-
-        page_widget = QWidget()
-        page_widget.setFixedWidth(82)
-        page_layout = QHBoxLayout(page_widget)
-        page_layout.setContentsMargins(0, 0, 0, 0)
-        page_layout.setSpacing(2)
-
-        self.page_input = QLineEdit()
-        self.page_input.setFixedSize(68, DEFAULT_COMPONENT_HEIGHT)
-        self.page_input.setAlignment(Qt.AlignCenter)
-        self.page_input.setStyleSheet(get_page_input_style())
-        self.page_input.returnPressed.connect(
-            lambda: self.switch_image("jump")
-        )
-
-        page_layout.addWidget(self.page_input)
-
-        self.next_button = QPushButton()
-        self.next_button.setIcon(QIcon(new_icon("arrow-right", "svg")))
-        self.next_button.setFixedSize(*ICON_SIZE_NORMAL)
-        self.next_button.setStyleSheet(get_button_style())
-        self.next_button.clicked.connect(lambda _: self.switch_image("next"))
-
-        nav_layout.addWidget(self.prev_button)
-        nav_layout.addStretch()
-        nav_layout.addWidget(page_widget)
-        nav_layout.addStretch()
-        nav_layout.addWidget(self.next_button)
-
-        left_layout.addWidget(nav_widget)
-
-        # Styling for the left panel
-        left_widget.setMinimumWidth(400)
-        left_widget.setMaximumWidth(800)
 
         ################################
         #          Right panel         #
@@ -158,21 +138,56 @@ class VQADialog(QDialog):
         action_layout.setContentsMargins(10, 0, 10, 0)
         action_layout.setSpacing(8)
 
-        self.load_images_button = QPushButton(self.tr("Load Images"))
-        self.load_images_button.setStyleSheet(get_primary_button_style())
-        self.load_images_button.clicked.connect(self.load_images_folder)
+        self.refresh_button_right = QPushButton()
+        self.refresh_button_right.setIcon(QIcon(new_icon("refresh", "svg")))
+        self.refresh_button_right.setFixedSize(*ICON_SIZE_NORMAL)
+        self.refresh_button_right.setStyleSheet(get_button_style())
+        self.refresh_button_right.setToolTip(self.tr("Refresh Data"))
+        self.refresh_button_right.clicked.connect(self.refresh_data)
+        self.refresh_button_right.setVisible(False)
+
+        self.toggle_panel_button_right = QPushButton()
+        self.toggle_panel_button_right.setIcon(
+            QIcon(new_icon("sidebar", "svg"))
+        )
+        self.toggle_panel_button_right.setFixedSize(*ICON_SIZE_NORMAL)
+        self.toggle_panel_button_right.setStyleSheet(get_button_style())
+        self.toggle_panel_button_right.setToolTip(self.tr("Toggle Sidebar"))
+        self.toggle_panel_button_right.clicked.connect(self.toggle_left_panel)
+        self.toggle_panel_button_right.setVisible(False)
 
         self.export_button = QPushButton(self.tr("Export Labels"))
-        self.export_button.setStyleSheet(get_export_button_style())
+        self.export_button.setStyleSheet(
+            get_dialog_button_style("success", "medium")
+        )
         self.export_button.clicked.connect(self.export_labels)
 
         self.clear_button = QPushButton(self.tr("Clear All"))
-        self.clear_button.setStyleSheet(get_danger_button_style())
+        self.clear_button.setStyleSheet(
+            get_dialog_button_style("secondary", "medium")
+        )
         self.clear_button.clicked.connect(self.clear_current)
 
-        action_layout.addWidget(self.load_images_button, 1)
+        self.add_component_button = QPushButton(self.tr("Add Compo"))
+        self.add_component_button.setStyleSheet(
+            get_dialog_button_style("primary", "medium")
+        )
+        self.add_component_button.clicked.connect(self.add_custom_component)
+
+        self.delete_component_button = QPushButton(self.tr("Del Compo"))
+        self.delete_component_button.setStyleSheet(
+            get_dialog_button_style("danger", "medium")
+        )
+        self.delete_component_button.clicked.connect(
+            self.delete_custom_component
+        )
+
+        action_layout.addWidget(self.refresh_button_right)
+        action_layout.addWidget(self.toggle_panel_button_right)
         action_layout.addWidget(self.export_button, 1)
         action_layout.addWidget(self.clear_button, 1)
+        action_layout.addWidget(self.add_component_button, 1)
+        action_layout.addWidget(self.delete_component_button, 1)
 
         right_layout.addWidget(action_widget)
 
@@ -189,37 +204,75 @@ class VQADialog(QDialog):
         self.scroll_area.setWidget(self.scroll_widget)
         right_layout.addWidget(self.scroll_area, 1)
 
-        bottom_widget = QWidget()
-        bottom_widget.setFixedHeight(DEFAULT_COMPONENT_HEIGHT)
-        bottom_layout = QHBoxLayout(bottom_widget)
-        bottom_layout.setContentsMargins(10, 0, 10, 0)
-        bottom_layout.setSpacing(8)
+        nav_widget = QWidget()
+        nav_widget.setFixedHeight(DEFAULT_COMPONENT_HEIGHT)
+        nav_layout = QHBoxLayout(nav_widget)
+        nav_layout.setContentsMargins(10, 0, 10, 0)
+        nav_layout.setSpacing(8)
 
-        self.add_component_button = QPushButton(self.tr("Add Componet"))
-        self.add_component_button.setStyleSheet(get_primary_button_style())
-        self.add_component_button.clicked.connect(self.add_custom_component)
+        self.prev_button = QPushButton()
+        self.prev_button.setIcon(QIcon(new_icon("arrow-left", "svg")))
+        self.prev_button.setFixedSize(*ICON_SIZE_NORMAL)
+        self.prev_button.setStyleSheet(get_button_style())
+        self.prev_button.clicked.connect(lambda _: self.switch_image("prev"))
 
-        self.delete_component_button = QPushButton(self.tr("Del Componet"))
-        self.delete_component_button.setStyleSheet(get_danger_button_style())
-        self.delete_component_button.clicked.connect(
-            self.delete_custom_component
-        )
+        page_widget = QWidget()
+        page_widget.setFixedWidth(82)
+        page_layout = QHBoxLayout(page_widget)
+        page_layout.setContentsMargins(0, 0, 0, 0)
+        page_layout.setSpacing(2)
 
-        bottom_layout.addWidget(self.add_component_button, 1)
-        bottom_layout.addWidget(self.delete_component_button, 1)
+        self.page_input = PageInputLineEdit()
+        self.page_input.vqa_dialog = self
+        self.page_input.setFixedSize(68, DEFAULT_COMPONENT_HEIGHT)
+        self.page_input.setAlignment(Qt.AlignCenter)
+        self.page_input.setStyleSheet(get_page_input_style())
+        self.page_input.textChanged.connect(self.validate_page_input)
+        self.page_input.editingFinished.connect(self.on_page_input_finished)
 
-        right_layout.addWidget(bottom_widget)
+        page_layout.addWidget(self.page_input)
 
-        # Add panels to main splitter
+        self.next_button = QPushButton()
+        self.next_button.setIcon(QIcon(new_icon("arrow-right", "svg")))
+        self.next_button.setFixedSize(*ICON_SIZE_NORMAL)
+        self.next_button.setStyleSheet(get_button_style())
+        self.next_button.clicked.connect(lambda _: self.switch_image("next"))
+
+        nav_layout.addWidget(self.prev_button)
+        nav_layout.addStretch()
+        nav_layout.addWidget(page_widget)
+        nav_layout.addStretch()
+        nav_layout.addWidget(self.next_button)
+
+        right_layout.addWidget(nav_widget)
+
         self.main_splitter.addWidget(left_widget)
         self.main_splitter.addWidget(right_widget)
-        self.main_splitter.setSizes([500, 500])
 
-        self.main_splitter.setStretchFactor(0, 0)
-        self.main_splitter.setStretchFactor(1, 0)
+        total_width = DEFAULT_WINDOW_SIZE[0] - 40
+        left_width = total_width // 2
+        right_width = total_width - left_width
+        self.main_splitter.setSizes([left_width, right_width])
+        self.main_splitter.setStretchFactor(0, 1)
+        self.main_splitter.setStretchFactor(1, 1)
         main_layout.addWidget(self.main_splitter)
 
         self.update_navigation_state()
+
+    def toggle_left_panel(self):
+        sizes = self.main_splitter.sizes()
+        if sizes[0] == 0:
+            total_width = self.main_splitter.width()
+            left_width = total_width // 2
+            right_width = total_width - left_width
+            self.main_splitter.setSizes([left_width, right_width])
+            self.refresh_button_right.setVisible(False)
+            self.toggle_panel_button_right.setVisible(False)
+        else:
+            total_width = self.main_splitter.width()
+            self.main_splitter.setSizes([0, total_width])
+            self.refresh_button_right.setVisible(True)
+            self.toggle_panel_button_right.setVisible(True)
 
     def load_config(self):
         """
@@ -291,10 +344,10 @@ class VQADialog(QDialog):
             return
 
         if mode == "jump":
-            current_index = int(self.page_input.text())
-            if (
-                current_index < 1
-                or current_index > len(self.parent().image_list) - 1
+            user_input = int(self.page_input.text())
+            current_index = user_input - 1
+            if current_index < 0 or current_index >= len(
+                self.parent().image_list
             ):
                 return
         elif mode == "prev":
@@ -314,6 +367,10 @@ class VQADialog(QDialog):
 
         try:
             self.switching_image = True
+
+            original_sizes = self.main_splitter.sizes()
+            was_collapsed = original_sizes[0] == 0
+
             self.save_current_image_data()
             new_file = self.parent().image_list[current_index]
             self.parent().load_file(new_file)
@@ -321,6 +378,17 @@ class VQADialog(QDialog):
             self.update_navigation_state()
             self.clear_all_components_silent()
             self.load_current_image_data()
+
+            def restore_panel_state():
+                if was_collapsed:
+                    self.main_splitter.setSizes([0, PANEL_SIZE])
+                    self.toggle_panel_button_right.setVisible(True)
+                else:
+                    self.main_splitter.setSizes([PANEL_SIZE, PANEL_SIZE])
+                    self.toggle_panel_button_right.setVisible(False)
+
+            QTimer.singleShot(10, restore_panel_state)
+
             self.switching_image = False
         except (ValueError, AttributeError):
             self.switching_image = False
@@ -401,6 +469,7 @@ class VQADialog(QDialog):
             or not self.parent().other_data
         ):
             self.set_default_values()
+            self.adjust_all_text_widgets_height()
             return
 
         vqa_data = self.parent().other_data.get("vqaData", {})
@@ -417,6 +486,8 @@ class VQADialog(QDialog):
                 self.set_component_default_value(
                     widget, comp_type, comp["options"]
                 )
+
+        self.adjust_all_text_widgets_height()
 
     def update_navigation_state(self):
         """
@@ -883,6 +954,119 @@ class VQADialog(QDialog):
         self.custom_components.pop(index)
         self.save_config()
 
+    def open_ai_assistant(self, component_obj):
+        """
+        Open AI assistant dialog for QLineEdit component.
+
+        Args:
+            component_obj (dict): Component object containing widget and metadata
+        """
+        widget = component_obj["widget"]
+        current_text = widget.toPlainText().strip()
+
+        dialog = AIPromptDialog(self, current_text)
+        if dialog.exec_() == QDialog.Accepted:
+            prompt = dialog.get_prompt()
+            if prompt:
+                self.loading_msg = AILoadingDialog(self)
+
+                current_image_path = None
+                if (
+                    hasattr(self.parent(), "filename")
+                    and self.parent().filename
+                ):
+                    current_image_path = self.parent().filename
+
+                self.ai_worker = AIWorkerThread(
+                    prompt, current_text, {}, current_image_path
+                )
+                self.ai_worker.finished.connect(
+                    lambda result, success, error: self.handle_ai_result(
+                        result, success, error, widget
+                    )
+                )
+
+                self.loading_msg.cancel_button.clicked.connect(
+                    self.cancel_ai_processing
+                )
+                self.ai_worker.start()
+                if self.loading_msg.exec_() == QDialog.Rejected:
+                    self.cancel_ai_processing()
+
+    def cancel_ai_processing(self):
+        """Cancel the AI processing"""
+        if hasattr(self, "ai_worker") and self.ai_worker.isRunning():
+            self.ai_worker.terminate()
+            self.ai_worker.wait(1000)
+        if hasattr(self, "loading_msg"):
+            self.loading_msg.close()
+
+    def handle_ai_result(self, result, success, error_message, widget):
+        """
+        Handle AI API result.
+
+        Args:
+            result (str): Generated text result
+            success (bool): Whether the API call was successful
+            error_message (str): Error message if failed
+            widget: Target text widget
+        """
+        if hasattr(self, "loading_msg"):
+            self.loading_msg.close()
+
+        if success:
+            dialog = QDialog(self)
+            dialog.setWindowTitle(self.tr("AI Generated Result"))
+            dialog.setModal(True)
+            dialog.setWindowFlags(
+                dialog.windowFlags() | Qt.WindowStaysOnTopHint
+            )
+            dialog.resize(500, 400)
+
+            layout = QVBoxLayout(dialog)
+            layout.setSpacing(10)
+
+            text_edit = QTextEdit()
+            text_edit.setPlainText(result)
+            text_edit.setReadOnly(True)
+            layout.addWidget(text_edit)
+
+            button_layout = QHBoxLayout()
+            button_layout.addStretch()
+
+            apply_button = QPushButton(self.tr("Apply"))
+            apply_button.setStyleSheet(
+                get_dialog_button_style("primary", "medium")
+            )
+            cancel_button = QPushButton(self.tr("Cancel"))
+            cancel_button.setStyleSheet(
+                get_dialog_button_style("secondary", "medium")
+            )
+
+            button_layout.addWidget(apply_button)
+            button_layout.addWidget(cancel_button)
+            layout.addLayout(button_layout)
+
+            apply_button.clicked.connect(dialog.accept)
+            cancel_button.clicked.connect(dialog.reject)
+            apply_button.setDefault(True)
+
+            reply = dialog.exec_()
+
+            if reply == QDialog.Accepted:
+                widget.blockSignals(True)
+                widget.setPlainText(result)
+                widget.blockSignals(False)
+                if hasattr(widget, "adjust_height"):
+                    widget.adjust_height()
+                self.save_current_image_data()
+        else:
+            QMessageBox.warning(
+                self,
+                self.tr("Error"),
+                self.tr("Failed to generate content:\n") + error_message,
+            )
+
     def create_component(self, component_data, from_config=False):
         """
         Create and add a new component to the UI.
@@ -910,10 +1094,19 @@ class VQADialog(QDialog):
         title_layout.addWidget(title_label)
         title_layout.addStretch()
 
+        if comp_type == "QLineEdit":
+            ai_button = QPushButton()
+            ai_button.setIcon(QIcon(new_icon("wand", "svg")))
+            ai_button.setFixedSize(*ICON_SIZE_SMALL)
+            ai_button.setStyleSheet(get_button_style())
+            ai_button.setToolTip(self.tr("AI Assistant"))
+            title_layout.addWidget(ai_button)
+
         edit_button = QPushButton()
         edit_button.setIcon(QIcon(new_icon("edit", "svg")))
         edit_button.setFixedSize(*ICON_SIZE_SMALL)
         edit_button.setStyleSheet(get_button_style())
+        edit_button.setToolTip(self.tr("Edit Content"))
         title_layout.addWidget(edit_button)
 
         self.scroll_layout.addWidget(title_widget)
@@ -1003,6 +1196,11 @@ class VQADialog(QDialog):
         edit_button.clicked.connect(
             lambda: self.edit_custom_component_by_object(component_obj)
         )
+
+        if comp_type == "QLineEdit":
+            ai_button.clicked.connect(
+                lambda: self.open_ai_assistant(component_obj)
+            )
 
         self.custom_components.append(component_obj)
 
@@ -1149,6 +1347,8 @@ class VQADialog(QDialog):
             widget.blockSignals(True)
             widget.setPlainText(str(value) if value else "")
             widget.blockSignals(False)
+            if hasattr(widget, "adjust_height"):
+                widget.adjust_height()
 
         elif comp_type == "QRadioButton":
             layout = widget.layout()
@@ -1201,6 +1401,16 @@ class VQADialog(QDialog):
                 if checkbox_widget:
                     checkbox_widget.blockSignals(False)
 
+    def adjust_all_text_widgets_height(self):
+        """
+        Trigger height adjustment for all AutoResizeTextEdit widgets.
+        """
+        for comp in self.custom_components:
+            if comp["type"] == "QLineEdit":
+                widget = comp["widget"]
+                if hasattr(widget, "adjust_height"):
+                    widget.adjust_height()
+
     def export_labels(self):
         """
         Export all annotation data to a JSONL file.
@@ -1237,9 +1447,6 @@ class VQADialog(QDialog):
 
         with open(export_path, "w", encoding="utf-8") as f:
             for i, image_file in enumerate(self.image_files):
-                self.current_image_index = i
-                self.load_current_image_data()
-
                 # Basic image info
                 pixmap = QPixmap(image_file)
                 width = pixmap.width() if not pixmap.isNull() else 0
@@ -1252,11 +1459,38 @@ class VQADialog(QDialog):
                     "height": height,
                 }
 
-                # Add component data
-                other_data = getattr(self.parent(), "other_data", {})
-                if other_data:
-                    vqa_data = other_data.get("vqaData", {})
-                    all_data.update(vqa_data)
+                label_file_path = get_label_file_path(
+                    image_file, self.parent().output_dir
+                )
+                if os.path.exists(label_file_path):
+                    try:
+                        with open(
+                            label_file_path, "r", encoding="utf-8"
+                        ) as label_f:
+                            label_data_json = json.load(label_f)
+                            vqa_data = label_data_json.get("vqaData", {})
+                            all_data.update(vqa_data)
+                            all_data["shapes"] = label_data_json.get("shapes", [])
+                    except Exception as e:
+                        logger.warning(
+                            f"Failed to load label file {label_file_path}: {e}"
+                        )
+
+                for component in self.custom_components:
+                    comp_title = component["title"]
+                    if comp_title not in all_data:
+                        comp_type = component["type"]
+                        if comp_type == "QLineEdit":
+                            all_data[comp_title] = ""
+                        elif comp_type == "QRadioButton":
+                            all_data[comp_title] = None
+                        elif comp_type == "QComboBox":
+                            all_data[comp_title] = None
+                        elif comp_type == "QCheckBox":
+                            all_data[comp_title] = []
+
+                if "shapes" not in all_data:
+                    all_data["shapes"] = []
 
                 # Filter and rename fields based on export config
                 label_data = {}
@@ -1490,6 +1724,72 @@ class VQADialog(QDialog):
         widget.blockSignals(False)
         widget.currentTextChanged.connect(self.save_current_image_data)
 
+    def validate_page_input(self, text):
+        """Real-time validation of page input"""
+        if not text:
+            return
+
+        try:
+            if not text.isdigit():
+                cursor_pos = self.page_input.cursorPosition()
+                clean_text = "".join(c for c in text if c.isdigit())
+                self.page_input.setText(clean_text)
+                self.page_input.setCursorPosition(
+                    min(cursor_pos, len(clean_text))
+                )
+                return
+
+            page_num = int(text)
+            max_pages = (
+                len(self.parent().image_list)
+                if self.parent().image_list
+                else 1
+            )
+
+            if page_num > max_pages:
+                self.page_input.setText(str(max_pages))
+                self.page_input.setCursorPosition(len(str(max_pages)))
+
+        except ValueError:
+            pass
+
+    def on_page_input_finished(self):
+        """Handle when user finishes editing page input"""
+        text = self.page_input.text().strip()
+
+        if not text:
+            self.restore_current_page_number()
+            return
+
+        try:
+            page_num = int(text)
+            max_pages = (
+                len(self.parent().image_list)
+                if self.parent().image_list
+                else 1
+            )
+
+            if page_num < 1:
+                self.page_input.setText("1")
+            elif page_num > max_pages:
+                self.page_input.setText(str(max_pages))
+
+        except ValueError:
+            self.restore_current_page_number()
+
+    def restore_current_page_number(self):
+        """Restore the current page number in the input"""
+        if self.parent().filename and self.parent().image_list:
+            try:
+                current_index = self.parent().image_list.index(
+                    self.parent().filename
+                )
+                self.page_input.setText(str(current_index + 1))
+            except (ValueError, AttributeError):
+                self.page_input.setText("1")
+        else:
+            self.page_input.setText("1")
+
     def closeEvent(self, event):
         """
         Handle dialog close event and save configuration.
@@ -1498,7 +1798,8 @@ class VQADialog(QDialog):
             event: Close event object
         """
         self.save_config()
-        super().closeEvent(event)
+        self.hide()
+        event.ignore()
 
     def resizeEvent(self, event):
         """
@@ -1542,3 +1843,41 @@ class VQADialog(QDialog):
             self.page_input.setValidator(
                 QIntValidator(1, len(self.image_files))
             )
+            QTimer.singleShot(100, self.adjust_all_text_widgets_height)
+
+    def refresh_data(self):
+        """
+        Refresh VQA dialog data to sync with main window changes.
+        """
+        if not hasattr(self.parent(), "image_list") or not self.parent().image_list:
+            QMessageBox.information(
+                self,
+                self.tr("Info"),
+                self.tr("No images loaded in main window!")
+            )
+            return
+
+        self.save_current_image_data()
+        self.image_files = self.parent().image_list
+        self.update_image_display()
+        self.update_navigation_state()
+        self.load_current_image_data()
+
+        if self.image_files:
+            self.page_input.setValidator(
+                QIntValidator(1, len(self.image_files))
+            )
+
+        QTimer.singleShot(100, self.adjust_all_text_widgets_height)
+
+        popup = Popup(
+            self.tr("VQA data refreshed successfully!"),
+            self,
+            icon=new_icon("copy-green", "svg"),
+        )
+        popup.show_popup(self, position="default")
+
+    def showEvent(self, event):
+        """Adjust text widget heights after dialog shown"""
+        super().showEvent(event)
+        QTimer.singleShot(200, self.adjust_all_text_widgets_height)

@@ -1,5 +1,49 @@
 # X-AnyLabeling Changelog
 
+## `v3.2.2` (Aug 31, 2025)
+
+### 🚀 New Features
+
+- Support batch editing for multiple shapes (#1084)
+- Introduce AI Assistant for VQA
+- Add prompt template management to VQA
+- Enhance VQA dialog with a new UI including sidebar toggles, streamlined navigation controls, improved page navigation, loading indicators, and updated button styles
+
+### 🐛 Bug Fixes
+
+- Fix issue with dragging and moving the image (#1088)
+
+### 🛠️ Improvements
+
+- Optimize SAM inference memory management (#1086)
+
+### 🌟 Contributors
+
+A total of 4 developers contributed to this release.
+
+Thank @jsolobang, @zhaoruibing, @zhixuwei, @CVHub520
+
+## `v3.2.1` (Aug 23, 2025)
+
+### 🚀 New Features
+
+- Add support for showing/hiding shape attributes on the canvas (#1076)
+- Add functionality to save training logs with timestamp upon dialog closure (#1077)
+
+### 🐛 Bug Fixes
+
+- Skip validation for auto-labeling special constants
+- Prevent closing UltralyticsDialog during active training session (#1077)
+- Improve WSL2 detection for image file handling in UltralyticsDialog (#1077)
+- Add UTF-8 encoding to file opening in validate_data_file function (#1077)
+- Resolve Windows multiprocessing and matplotlib segfault issues
+
+### 🌟 Contributors
+
+A total of 2 developer contributed to this release.
+
+Thank @FreemanTang, @CVHub520
+
 ## `v3.2.0` (Aug 19, 2025)
 
 ### 🚀 New Features

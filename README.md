@@ -57,15 +57,18 @@
 <details>
 <summary><strong>VQA</strong></summary>
 
-<video src="https://github.com/user-attachments/assets/92807672-f101-475b-b790-9caa1c31da05" width="100%" controls>
+<video src="https://github.com/user-attachments/assets/53adcff4-b962-41b7-a408-3afecd8d8c82" width="100%" controls>
 </video>
 </details>
 
 
 ## 🥳 What's New
 
+- Bump version to [3.2.2](https://github.com/CVHub520/X-AnyLabeling/releases/tag/v3.2.2)
+- Add AI Assistant and prompt template management for VQA
+- Add support for batch editing multiple shapes simultaneously
+- Add support for Show/Hide shape attributes on canvas
 - Add support for automated training platform with Ultralytics tasks in X-AnyLabeling [Link](./examples/training/ultralytics/README.md)
-- Bump version to [3.2.0](https://github.com/CVHub520/X-AnyLabeling/releases/tag/v3.2.0)
 - For more details, please refer to the [CHANGELOG](./CHANGELOG.md)
 
 
@@ -150,6 +153,8 @@
   - [Florence 2](./examples/vision_language/florence2/README.md)
 - [Counting](./examples/counting/)
   - [GeCo](./examples/counting/geco/README.md)
+- [Training](./examples/training/)
+  - [Ultralytics](./examples/training/ultralytics/README.md)
 
 
 ## Contribute
